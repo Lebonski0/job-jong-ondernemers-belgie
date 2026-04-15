@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://job-jong-ondernemers-belgie.vercel.app/sitemap.xml
