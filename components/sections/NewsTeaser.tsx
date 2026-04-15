@@ -7,7 +7,7 @@ export default function NewsTeaser() {
   return (
     <section className="py-24 bg-zinc-950 border-y border-zinc-800">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-end mb-12">
+        <div className="flex flex-col md:flex-row md:justify-between items-start md:items-end gap-6 mb-12">
           <div>
             <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-zinc-500 mb-4">Laatste Nieuws</h2>
             <h3 className="text-4xl font-bold tracking-tight">Curated insights.</h3>

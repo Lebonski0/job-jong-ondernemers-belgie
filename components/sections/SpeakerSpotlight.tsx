@@ -8,7 +8,7 @@ export default function SpeakerSpotlight() {
   return (
     <section className="py-16 md:py-24 bg-black relative overflow-hidden border-t border-zinc-900">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="flex items-end justify-between mb-12">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 mb-12">
           <div>
             <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-500 mb-3">Guest Speakers</h2>
             <h3 className="text-3xl font-black tracking-tighter">Spotlight</h3>

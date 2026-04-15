@@ -48,7 +48,7 @@ export default function EventsPreview() {
   return (
     <section className="py-16 md:py-24 bg-zinc-950 border-y border-zinc-900 overflow-hidden relative group/section">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-12">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
           <div className="max-w-2xl">
             <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-500 mb-3">Upcoming Events</h2>
             <h3 className="text-3xl md:text-5xl font-black tracking-tighter">Agenda</h3>

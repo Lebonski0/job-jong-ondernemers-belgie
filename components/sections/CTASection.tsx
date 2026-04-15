@@ -25,7 +25,7 @@ export default function CTASection() {
             Meld je nu aan
           </Button>
           
-          <div className="mt-12 flex items-center justify-center gap-8 text-zinc-600 text-[10px] font-bold uppercase tracking-[0.2em] relative z-10">
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-zinc-600 text-[10px] font-bold uppercase tracking-[0.2em] relative z-10">
             <span>100 Leden Max</span>
             <span>•</span>
             <span>Discord Access</span>
