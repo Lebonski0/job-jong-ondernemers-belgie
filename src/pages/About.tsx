@@ -29,7 +29,7 @@ const faqs = [
   },
 ];
 
-function FaqItem({ faq, index }: { faq: typeof faqs[0]; index: number }) {
+function FaqItem({ faq, index }: { faq: typeof faqs[0]; index: number; key?: any }) {
   const [open, setOpen] = useState(false);
   return (
     <motion.div

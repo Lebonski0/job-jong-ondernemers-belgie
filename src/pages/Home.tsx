@@ -27,9 +27,6 @@ export default function Home() {
       
       <Suspense fallback={<SectionLoading />}>
         <SocialProof />
-      </Suspense>
-
-      <Suspense fallback={<SectionLoading />}>
         <Values />
       </Suspense>
 
