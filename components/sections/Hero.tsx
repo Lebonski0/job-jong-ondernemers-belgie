@@ -90,7 +90,7 @@ export default function Hero() {
                   style={{ zIndex: 5 - i }}
                 >
                   <img
-                    src={`https://fastly.picsum.photos/seed/member${n}/80/80`}
+                    src={`https://randomuser.me/api/portraits/${n % 2 === 0 ? 'women' : 'men'}/${n + 30}.jpg`}
                     alt={`Lid ${n}`}
                     className="w-full h-full object-cover grayscale"
                   />

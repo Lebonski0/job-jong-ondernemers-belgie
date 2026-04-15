@@ -24,7 +24,7 @@ export default function EventsPreview() {
       type: "Workshop",
       date: "24 April, 2024",
       location: "Antwerpen / Online",
-      image: "https://fastly.picsum.photos/seed/business1/800/600",
+      image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
       icon: Mic2
     },
     {
@@ -32,7 +32,7 @@ export default function EventsPreview() {
       type: "Physical",
       date: "12 Mei, 2024",
       location: "Gent",
-      image: "https://fastly.picsum.photos/seed/dinner/800/600",
+      image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80",
       icon: Users
     },
     {
@@ -40,7 +40,7 @@ export default function EventsPreview() {
       type: "Online",
       date: "18 April, 2024",
       location: "Online",
-      image: "https://fastly.picsum.photos/seed/sales/800/600",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
       icon: Video
     }
   ];
