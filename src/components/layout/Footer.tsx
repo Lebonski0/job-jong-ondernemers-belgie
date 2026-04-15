@@ -130,7 +130,7 @@ export function Footer() {
                 <span className="text-black font-black text-xs tracking-tight">JOB</span>
               </div>
               <div className="leading-tight">
-                <p className="text-sm font-black tracking-tighter text-white">JONG ONDERNEMEND</p>
+                <p className="text-sm font-black tracking-tighter text-white">JONG ONDERNEMERS</p>
                 <p className="text-[10px] font-black tracking-[0.2em] text-zinc-600 uppercase">BELGIË</p>
               </div>
             </Link>
@@ -222,7 +222,7 @@ export function Footer() {
         {/* ── BOTTOM BAR ── */}
         <div className="border-t border-white/[0.05] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-[10px] text-zinc-700 font-bold uppercase tracking-widest">
-            © {new Date().getFullYear()} Jong Ondernemend België — Alle rechten voorbehouden.
+            © {new Date().getFullYear()} Jong Ondernemers België — Alle rechten voorbehouden.
           </p>
           <div className="flex items-center gap-6">
             <a href="#" className="text-[10px] text-zinc-700 font-bold uppercase tracking-widest hover:text-zinc-400 transition-colors">

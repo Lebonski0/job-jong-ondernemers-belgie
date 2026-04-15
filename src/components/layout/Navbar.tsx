@@ -57,7 +57,7 @@ export function Navbar() {
               JOB
             </span>
             <span className="text-[8px] font-bold tracking-[0.3em] text-zinc-500 uppercase leading-none mt-1 hidden sm:block">
-              Jong Ondernemend België
+              Jong Ondernemers België
             </span>
           </div>
         </Link>
