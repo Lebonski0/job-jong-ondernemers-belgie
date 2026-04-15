@@ -5,8 +5,10 @@ import { useEffect, Suspense, lazy } from "react";
 import { useLocation } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 
-// Lazy load pages for code splitting (fixes Lighthouse TBT/Unused JS issues)
-const Home = lazy(() => import("./pages/Home"));
+// Direct import for Home (Critical for LCP and first paint)
+import Home from "./pages/Home";
+
+// Lazy load other pages (Good for overall bundle size)
 const About = lazy(() => import("./pages/About"));
 const Speakers = lazy(() => import("./pages/Speakers"));
 const Events = lazy(() => import("./pages/Events"));
@@ -21,9 +23,8 @@ function ScrollToTop() {
   return null;
 }
 
-// Fallback loader while lazy chunks are downloading
 const PageFallback = () => (
-  <div className="flex h-[50vh] items-center justify-center text-zinc-500">
+  <div className="flex h-[50vh] items-center justify-center text-zinc-500 bg-[#020203]">
     <Loader2 className="h-8 w-8 animate-spin" />
   </div>
 );
@@ -32,9 +33,9 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="min-h-screen flex flex-col font-sans text-zinc-900 bg-white selection:bg-black selection:text-white">
+      <div className="min-h-screen flex flex-col font-sans text-zinc-900 bg-[#020203] selection:bg-white selection:text-black">
         <Navbar />
-        <main className="flex-grow bg-[#020203]">
+        <main className="flex-grow">
           <Suspense fallback={<PageFallback />}>
             <Routes>
               <Route path="/" element={<Home />} />
