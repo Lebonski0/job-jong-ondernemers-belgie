@@ -44,7 +44,7 @@ export function Navbar() {
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between max-w-7xl">
-        <Link to="/" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-3 group" aria-label="Home">
           <motion.div 
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -111,8 +111,8 @@ export function Navbar() {
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger 
               render={
-                <Button variant="ghost" size="icon" className="h-10 w-10 text-white hover:bg-zinc-800/50 rounded-full">
-                  <Menu className="h-5 w-5" />
+                <Button variant="ghost" size="icon" className="min-h-[44px] min-w-[44px] h-11 w-11 text-white hover:bg-zinc-800/50 rounded-full active:scale-95 transition-transform duration-200" aria-label="Toggle Menu">
+                  <Menu className="h-5 w-5" aria-hidden="true" />
                 </Button>
               }
             />
@@ -122,8 +122,8 @@ export function Navbar() {
                   <div className="w-8 h-8 bg-white flex items-center justify-center rounded-md">
                     <span className="text-black font-black text-xs">JOB</span>
                   </div>
-                  <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)} className="text-zinc-500">
-                    <X className="h-6 w-6" />
+                  <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)} className="text-zinc-500 min-h-[44px] min-w-[44px] active:scale-95 transition-transform duration-200" aria-label="Close Menu">
+                    <X className="h-6 w-6" aria-hidden="true" />
                   </Button>
                 </div>
                 

@@ -1,302 +1,518 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Calendar as CalendarIcon, MapPin, Users, Video, ChevronRight, ChevronLeft, ArrowRight } from "lucide-react";
+import {
+  Calendar as CalendarIcon,
+  MapPin,
+  Users,
+  Video,
+  ChevronRight,
+  ChevronLeft,
+  ArrowRight,
+  Clock,
+  Archive,
+  Zap,
+} from "lucide-react";
 import { motion } from "motion/react";
 import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
+const itemVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] },
+  }),
+};
+
+const upcomingEvents = [
+  {
+    date: "18 April",
+    day: "18",
+    month: "APR",
+    title: "Mastermind: B2B Sales Strategy",
+    type: "Online",
+    time: "19:00 – 21:00",
+    spots: "12/15",
+    spotsLeft: 3,
+    full: false,
+    icon: Video,
+    image: "https://picsum.photos/seed/sales/800/600",
+    description: "Leer hoe je high-ticket B2B deals sluit zonder koud te bellen.",
+    color: "blue",
+  },
+  {
+    date: "24 April",
+    day: "24",
+    month: "APR",
+    title: "Thomas Van Damme: The Art of the Exit",
+    type: "Workshop",
+    time: "20:00 – 22:00",
+    spots: "Volzet",
+    spotsLeft: 0,
+    full: true,
+    icon: Users,
+    image: "https://picsum.photos/seed/exit/800/600",
+    description: "Exclusieve sessie over het verkopen van je bedrijf voor 8+ figuren.",
+    color: "red",
+  },
+  {
+    date: "12 Mei",
+    day: "12",
+    month: "MEI",
+    title: "Founder Dinner Gent: Tech & Growth",
+    type: "Physical",
+    time: "18:30 – Late",
+    spots: "4/20",
+    spotsLeft: 16,
+    full: false,
+    icon: MapPin,
+    image: "https://picsum.photos/seed/dinner3/800/600",
+    description: "Een intiem diner met 20 andere founders in het hartje van Gent.",
+    color: "blue",
+  },
+  {
+    date: "28 Mei",
+    day: "28",
+    month: "MEI",
+    title: "Product-Led Growth Masterclass",
+    type: "Online",
+    time: "19:00 – 21:00",
+    spots: "8/25",
+    spotsLeft: 17,
+    full: false,
+    icon: Video,
+    image: "https://picsum.photos/seed/product/800/600",
+    description: "Hoe je product je beste marketingkanaal wordt.",
+    color: "blue",
+  },
+  {
+    date: "5 Juni",
+    day: "05",
+    month: "JUN",
+    title: "Summer Networking Drinks",
+    type: "Physical",
+    time: "17:00 – 21:00",
+    spots: "45/100",
+    spotsLeft: 55,
+    full: false,
+    icon: Users,
+    image: "https://picsum.photos/seed/drinks/800/600",
+    description: "Vier de zomer met de community op een unieke rooftop locatie.",
+    color: "blue",
+  },
+];
+
+const formats = [
+  {
+    icon: Video,
+    title: "Online Deep-Dives",
+    desc: "Focus op specifieke skills. Van SEO tot fundraising, geleid door experts uit de community.",
+    count: "12×/jaar",
+  },
+  {
+    icon: Users,
+    title: "Physical Meetups",
+    desc: "Informele diners en drinks in de grote Belgische steden. Netwerken op z'n best.",
+    count: "8×/jaar",
+  },
+  {
+    icon: Zap,
+    title: "Intensive Workshops",
+    desc: "Hands-on sessies waar we echt aan je business werken. Geen theorie, enkel resultaat.",
+    count: "4×/jaar",
+  },
+];
+
+const pastRecaps = [
+  {
+    title: "JOB Summit 2023",
+    desc: "Een weekend vol inspiratie, workshops en nieuwe vriendschappen in de Belgische Ardennen.",
+    img: "https://picsum.photos/seed/summit/1200/700",
+    tag: "Summit",
+    attendees: "33",
+  },
+  {
+    title: "Dinner with a Billionaire",
+    desc: "Een exclusieve avond met Marc Coucke over de toekomst van investeren in de Belgische tech scene.",
+    img: "https://picsum.photos/seed/dinner2/1200/700",
+    tag: "Dinner",
+    attendees: "20",
+  },
+];
+
 export default function Events() {
-  const [currentMonth, setCurrentMonth] = useState("April 2024");
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const scroll = (direction: 'left' | 'right') => {
+  const scroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
-      const scrollAmount = 400;
       scrollContainerRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth'
+        left: direction === "left" ? -420 : 420,
+        behavior: "smooth",
       });
     }
   };
 
-  const upcomingEvents = [
-    {
-      date: "18 April",
-      title: "Mastermind: B2B Sales Strategy",
-      type: "Online",
-      time: "19:00 - 21:00",
-      spots: "12/15",
-      icon: Video,
-      image: "https://picsum.photos/seed/sales/800/600",
-      description: "Leer hoe je high-ticket B2B deals sluit zonder koud te bellen."
-    },
-    {
-      date: "24 April",
-      title: "Thomas Van Damme: The Art of the Exit",
-      type: "Workshop",
-      time: "20:00 - 22:00",
-      spots: "Volzet",
-      icon: Users,
-      image: "https://picsum.photos/seed/exit/800/600",
-      description: "Exclusieve sessie over het verkopen van je bedrijf voor 8+ figuren."
-    },
-    {
-      date: "12 Mei",
-      title: "Founder Dinner Gent: Tech & Growth",
-      type: "Physical",
-      time: "18:30 - Late",
-      spots: "4/20",
-      icon: MapPin,
-      image: "https://picsum.photos/seed/dinner3/800/600",
-      description: "Een intiem diner met 20 andere founders in het hartje van Gent."
-    },
-    {
-      date: "28 Mei",
-      title: "Product-Led Growth Masterclass",
-      type: "Online",
-      time: "19:00 - 21:00",
-      spots: "8/25",
-      icon: Video,
-      image: "https://picsum.photos/seed/product/800/600",
-      description: "Hoe je product je beste marketingkanaal wordt."
-    },
-    {
-      date: "5 Juni",
-      title: "Summer Networking Drinks",
-      type: "Physical",
-      time: "17:00 - 21:00",
-      spots: "45/100",
-      icon: Users,
-      image: "https://picsum.photos/seed/drinks/800/600",
-      description: "Vier de zomer met de community op een unieke rooftop locatie."
-    }
-  ];
-
   return (
-    <div className="pt-32 pb-20 bg-black text-white min-h-screen">
-      <div className="container mx-auto px-4 max-w-7xl">
-        {/* Header */}
-        <div className="max-w-4xl mb-24">
+    <div className="bg-[#020203] text-white min-h-screen">
+
+      {/* ── PAGE HERO ── */}
+      <section className="relative pt-36 pb-24 md:pt-48 md:pb-32 overflow-hidden">
+        <div className="absolute inset-0 -z-10" aria-hidden="true">
+          <div className="absolute inset-0 bg-[#020203]" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:72px_72px]" />
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Badge className="mb-6 bg-zinc-900 text-zinc-400 hover:bg-zinc-900 border-none px-4 py-1 font-bold uppercase tracking-widest text-[10px]">Onze Agenda</Badge>
-            <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-8 leading-[0.9]">
-              Connectie door <span className="text-zinc-700">ervaring.</span>
-            </h1>
-            <p className="text-xl text-zinc-400 leading-relaxed max-w-2xl font-medium">
-              Van intieme diners tot intensieve workshops en online deep-dives. 
-              Onze events zijn ontworpen om echte waarde en connectie te creëren tussen de 100 leden.
-            </p>
-          </motion.div>
+            animate={{ x: [0, 50, 0], y: [0, -50, 0] }}
+            transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-0 right-0 w-[700px] h-[700px] bg-blue-700/10 rounded-full blur-[150px]"
+          />
+          <motion.div
+            animate={{ x: [0, -40, 0], y: [0, 40, 0] }}
+            transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-800/8 rounded-full blur-[130px]"
+          />
+          <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#020203] to-transparent" />
         </div>
 
-        {/* Horizontal Scroll Section */}
-        <section className="mb-24 relative group">
-          <div className="flex items-end justify-between mb-8">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: -10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.09] backdrop-blur-md mb-8"
+            >
+              <CalendarIcon className="h-3 w-3 text-blue-400" aria-hidden="true" />
+              <span className="text-[10px] font-black text-blue-400 uppercase tracking-[0.22em]">Onze Agenda</span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.72, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+              className="font-black tracking-[-0.04em] leading-[0.92] mb-8 text-[clamp(2.8rem,8vw,6rem)]"
+            >
+              Connectie door{" "}
+              <span className="relative inline-block">
+                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-br from-white via-blue-100 to-blue-400">
+                  ervaring.
+                </span>
+                <span className="absolute inset-0 blur-3xl opacity-25 bg-gradient-to-r from-blue-600 to-indigo-500 rounded-full pointer-events-none" aria-hidden="true" />
+              </span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+              className="text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed"
+            >
+              Van intieme diners tot intensieve workshops en online deep-dives.
+              Onze events zijn ontworpen voor{" "}
+              <span className="text-zinc-200 font-semibold">echte waarde en connectie</span>{" "}
+              tussen de 100 leden.
+            </motion.p>
+
+            {/* Quick stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-wrap items-center gap-6 mt-10"
+            >
+              {[
+                { value: "24+", label: "Events per jaar" },
+                { value: "5", label: "Komende events" },
+                { value: "100%", label: "Exclusief voor leden" },
+              ].map((s, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <span className="text-2xl font-black tracking-tight text-white">{s.value}</span>
+                  <span className="text-[10px] font-bold text-zinc-600 uppercase tracking-widest leading-tight max-w-[80px]">{s.label}</span>
+                  {i < 2 && <div className="h-6 w-px bg-white/[0.07] ml-3" aria-hidden="true" />}
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── UPCOMING EVENTS — HORIZONTAL SCROLL ── */}
+      <section className="border-t border-white/[0.05] py-20 md:py-24">
+        <div className="container mx-auto px-4 max-w-6xl">
+
+          {/* Section header */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="flex items-end justify-between mb-10"
+          >
             <div>
-              <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-500 mb-3">Upcoming Events</h2>
-              <h3 className="text-3xl font-black tracking-tighter">Agenda</h3>
+              <p className="text-[9px] font-black uppercase tracking-[0.3em] text-zinc-600 mb-2">Komende Events</p>
+              <h2 className="text-3xl md:text-4xl font-black tracking-tight">Agenda</h2>
             </div>
             <div className="flex items-center gap-2">
-              <Button 
-                variant="outline" 
-                size="icon" 
-                onClick={() => scroll('left')}
-                className="rounded-full border-zinc-800 bg-zinc-900/50 hover:bg-white hover:text-black transition-all h-10 w-10"
+              <button
+                onClick={() => scroll("left")}
+                aria-label="Scroll left"
+                className="w-11 h-11 rounded-full border border-white/[0.08] bg-white/[0.03] hover:bg-white hover:text-black transition-all duration-200 active:scale-95 flex items-center justify-center cursor-pointer"
               >
-                <ChevronLeft className="h-5 w-5" />
-              </Button>
-              <Button 
-                variant="outline" 
-                size="icon" 
-                onClick={() => scroll('right')}
-                className="rounded-full border-zinc-800 bg-zinc-900/50 hover:bg-white hover:text-black transition-all h-10 w-10"
+                <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+              </button>
+              <button
+                onClick={() => scroll("right")}
+                aria-label="Scroll right"
+                className="w-11 h-11 rounded-full border border-white/[0.08] bg-white/[0.03] hover:bg-white hover:text-black transition-all duration-200 active:scale-95 flex items-center justify-center cursor-pointer"
               >
-                <ChevronRight className="h-5 w-5" />
-              </Button>
+                <ChevronRight className="h-4 w-4" aria-hidden="true" />
+              </button>
             </div>
-          </div>
+          </motion.div>
 
-          <div 
+          {/* Scroll strip */}
+          <div
             ref={scrollContainerRef}
-            className="flex gap-4 overflow-x-auto pb-8 no-scrollbar snap-x snap-mandatory scroll-smooth"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            className="flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory scroll-smooth"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            role="list"
+            aria-label="Komende events"
           >
             {upcomingEvents.map((event, i) => (
-              <motion.div 
+              <motion.article
                 key={i}
-                initial={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="min-w-[300px] md:min-w-[380px] snap-start"
+                transition={{ delay: i * 0.08, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                role="listitem"
+                className="min-w-[300px] md:min-w-[380px] snap-start flex-shrink-0"
               >
-                <Card className="border-zinc-800 bg-zinc-900/30 hover:bg-zinc-900/50 transition-all duration-500 rounded-[24px] overflow-hidden group/card h-[420px] flex flex-col relative">
-                  <div className="absolute inset-0 overflow-hidden">
-                    <img 
-                      src={event.image} 
-                      alt={event.title} 
-                      className="w-full h-full object-cover opacity-20 grayscale group-hover/card:grayscale-0 group-hover/card:scale-110 group-hover/card:opacity-40 transition-all duration-700"
-                      referrerPolicy="no-referrer"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
-                  </div>
-                  
-                  <CardContent className="p-8 flex flex-col h-full relative z-10">
-                    <div className="flex justify-between items-start mb-auto">
-                      <div className="flex flex-col">
-                        <span className="text-4xl font-black tracking-tighter leading-none mb-1">{event.date.split(' ')[0]}</span>
-                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500">{event.date.split(' ')[1]}</span>
+                <div className="relative h-[420px] rounded-2xl overflow-hidden border border-white/[0.07] bg-white/[0.02] group flex flex-col">
+                  {/* Background image */}
+                  <img
+                    src={event.image}
+                    alt={event.title}
+                    className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#08080c] via-[#08080c]/80 to-[#08080c]/30" />
+
+                  {/* Content */}
+                  <div className="relative z-10 p-7 flex flex-col h-full">
+                    {/* Top row: date + spots */}
+                    <div className="flex items-start justify-between mb-auto">
+                      <div className="flex flex-col leading-none">
+                        <span className="text-5xl font-black tracking-[-0.05em]">{event.day}</span>
+                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500">{event.month}</span>
                       </div>
-                      <Badge 
-                        variant={event.spots === "Volzet" ? "destructive" : "secondary"} 
+                      <Badge
                         className={cn(
-                          "rounded-full px-3 py-0.5 text-[9px] font-black uppercase tracking-widest border-none shadow-lg",
-                          event.spots === "Volzet" ? "bg-red-500/20 text-red-500" : "bg-blue-500/20 text-blue-400"
+                          "rounded-full text-[9px] font-black uppercase tracking-widest border-none",
+                          event.full
+                            ? "bg-red-500/15 text-red-400 border border-red-500/20"
+                            : "bg-blue-500/15 text-blue-400 border border-blue-500/20"
                         )}
                       >
                         {event.spots}
                       </Badge>
                     </div>
 
+                    {/* Bottom content */}
                     <div className="mt-auto">
                       <div className="flex items-center gap-2 mb-3">
-                        <event.icon className="h-3.5 w-3.5 text-blue-500" />
-                        <span className="text-[9px] font-black uppercase tracking-[0.2em] text-zinc-400">{event.type}</span>
+                        <event.icon className="h-3.5 w-3.5 text-blue-400" aria-hidden="true" />
+                        <span className="text-[9px] font-black uppercase tracking-[0.2em] text-zinc-500">{event.type}</span>
                       </div>
-                      <h4 className="text-2xl font-black tracking-tighter mb-3 leading-tight group-hover/card:text-white transition-colors">
+                      <h3 className="text-xl font-black tracking-tight mb-2 leading-snug">
                         {event.title}
-                      </h4>
-                      <p className="text-zinc-500 text-xs leading-relaxed mb-6 line-clamp-2">
+                      </h3>
+                      <p className="text-zinc-500 text-xs leading-relaxed mb-5 line-clamp-2">
                         {event.description}
                       </p>
-                      
-                      <div className="flex items-center gap-6 mb-6 text-[9px] font-bold uppercase tracking-widest text-zinc-600">
-                        <div className="flex items-center gap-2">
-                          <CalendarIcon className="h-3 w-3" />
-                          <span>{event.time}</span>
-                        </div>
+                      <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-zinc-600 mb-5">
+                        <Clock className="h-3 w-3" aria-hidden="true" />
+                        <span>{event.time}</span>
                       </div>
-
-                      <Button 
-                        className="w-full rounded-lg bg-white text-black hover:bg-zinc-200 transition-all h-11 font-black uppercase tracking-tighter text-xs group/btn"
-                        disabled={event.spots === "Volzet"}
+                      <Button
+                        disabled={event.full}
+                        className={cn(
+                          "w-full rounded-full min-h-[44px] font-black uppercase tracking-wider text-xs transition-all active:scale-95 cursor-pointer",
+                          event.full
+                            ? "bg-white/[0.05] text-zinc-500 border border-white/[0.07] cursor-default"
+                            : "bg-white text-black hover:bg-zinc-100 shadow-[0_0_30px_rgba(255,255,255,0.08)] hover:shadow-[0_0_50px_rgba(255,255,255,0.18)]"
+                        )}
                       >
-                        {event.spots === "Volzet" ? "Wachtlijst" : "Claim je plek"}
-                        <ArrowRight className="ml-2 h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-1" />
+                        {event.full ? "Wachtlijst" : "Claim je plek"}
+                        {!event.full && <ArrowRight className="ml-2 h-3.5 w-3.5" aria-hidden="true" />}
                       </Button>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+
+          {/* Hide scrollbar globally on this element */}
+          <style>{`.snap-x::-webkit-scrollbar { display: none; }`}</style>
+        </div>
+      </section>
+
+      {/* ── EVENT FORMATS ── */}
+      <section className="border-t border-white/[0.05] py-20 md:py-28">
+        <div className="container mx-auto px-4 max-w-6xl">
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-14"
+          >
+            <p className="text-[9px] font-black uppercase tracking-[0.3em] text-zinc-600 mb-2">Onze Formats</p>
+            <h2 className="text-3xl md:text-4xl font-black tracking-tight">Verschillende manieren om te groeien.</h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.05] rounded-2xl overflow-hidden border border-white/[0.05]">
+            {formats.map((fmt, i) => (
+              <motion.div
+                key={i}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={itemVariants}
+                className="bg-[#08080c] p-8 md:p-10 group hover:bg-[#0d0d16] transition-colors duration-300"
+              >
+                <div className="flex items-start justify-between mb-8">
+                  <div className="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.07] flex items-center justify-center group-hover:border-blue-500/30 group-hover:bg-blue-500/[0.07] transition-all duration-300">
+                    <fmt.icon className="h-5 w-5 text-blue-400" aria-hidden="true" />
+                  </div>
+                  <span className="text-[10px] font-black text-zinc-700 tracking-widest">{fmt.count}</span>
+                </div>
+                <h3 className="text-xl font-black tracking-tight mb-3">{fmt.title}</h3>
+                <p className="text-zinc-500 text-sm leading-relaxed">{fmt.desc}</p>
               </motion.div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Event Types */}
-        <section className="py-24 bg-zinc-950 border border-zinc-900 rounded-[48px] px-8 md:px-20 mb-40 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-[100px] -mr-48 -mt-48" />
-          
-          <div className="max-w-3xl mb-20">
-            <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-500 mb-4">Onze Formats</h2>
-            <h3 className="text-5xl font-black tracking-tighter">Verschillende manieren om te groeien.</h3>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
-            {[
-              {
-                title: "Online Deep-Dives",
-                desc: "Focus op specifieke skills. Van SEO tot fundraising, geleid door experts uit de community.",
-                icon: Video
-              },
-              {
-                title: "Physical Meetups",
-                desc: "Informele diners en drinks in de grote Belgische steden. Netwerken op z'n best in een ongedwongen sfeer.",
-                icon: Users
-              },
-              {
-                title: "Intensive Workshops",
-                desc: "Hands-on sessies waar we echt aan je business werken. Geen theorie, enkel resultaat.",
-                icon: MapPin
-              }
-            ].map((type, i) => (
-              <div key={i} className="group">
-                <div className="w-16 h-16 rounded-[24px] bg-zinc-900 border border-zinc-800 flex items-center justify-center mb-8 group-hover:bg-blue-500 group-hover:border-blue-400 transition-all duration-500 shadow-xl">
-                  <type.icon className="h-7 w-7 text-blue-500 group-hover:text-white transition-colors" />
-                </div>
-                <h4 className="text-2xl font-black tracking-tighter mb-4">{type.title}</h4>
-                <p className="text-zinc-500 leading-relaxed font-medium">{type.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+      {/* ── PAST EVENT RECAPS ── */}
+      <section className="border-t border-white/[0.05] py-20 md:py-28">
+        <div className="container mx-auto px-4 max-w-6xl">
 
-        {/* Past Events Recap */}
-        <section>
-          <div className="flex items-end justify-between mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-14"
+          >
             <div>
-              <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-500 mb-4">Archief</h2>
-              <h3 className="text-5xl font-black tracking-tighter">Recente Terugblikken.</h3>
+              <p className="text-[9px] font-black uppercase tracking-[0.3em] text-zinc-600 mb-2">Archief</p>
+              <h2 className="text-3xl md:text-4xl font-black tracking-tight">Recente Terugblikken.</h2>
             </div>
-            <Button variant="link" className="text-white font-black uppercase tracking-widest text-[10px] group">
-              Bekijk volledig archief <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Button>
-          </div>
+            <div className="flex items-center gap-2 text-zinc-600 cursor-pointer hover:text-white transition-colors group">
+              <Archive className="h-4 w-4 shrink-0" aria-hidden="true" />
+              <span className="text-[10px] font-black uppercase tracking-widest">Volledig archief</span>
+              <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+            </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {[
-              {
-                title: "JOB Summit 2023 Recap",
-                desc: "Een weekend vol inspiratie, workshops en nieuwe vriendschappen in de Belgische Ardennen.",
-                img: "https://picsum.photos/seed/summit/1200/600",
-                tag: "Summit"
-              },
-              {
-                title: "Dinner with a Billionaire",
-                desc: "Een exclusieve avond met Marc Coucke over de toekomst van investeren in de Belgische tech scene.",
-                img: "https://picsum.photos/seed/dinner2/1200/600",
-                tag: "Dinner"
-              }
-            ].map((recap, i) => (
-              <motion.div 
-                key={i} 
-                whileHover={{ y: -10 }}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {pastRecaps.map((recap, i) => (
+              <motion.article
+                key={i}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={itemVariants}
                 className="group cursor-pointer"
               >
-                <div className="aspect-[16/9] rounded-[40px] overflow-hidden mb-8 bg-zinc-900 border border-zinc-800 relative">
-                  <img 
-                    src={recap.img} 
-                    alt={recap.title} 
-                    className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                {/* Image */}
+                <div className="relative aspect-[16/9] rounded-2xl overflow-hidden border border-white/[0.07] bg-white/[0.02] mb-6">
+                  <img
+                    src={recap.img}
+                    alt={recap.title}
+                    className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute top-6 left-6">
-                    <Badge className="bg-white/10 backdrop-blur-md border-white/20 text-white font-black uppercase tracking-widest text-[10px]">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#020203]/60 to-transparent" />
+
+                  {/* Overlaid badges */}
+                  <div className="absolute top-5 left-5 flex items-center gap-2">
+                    <Badge className="bg-white/10 backdrop-blur-md border-white/[0.15] text-white font-black uppercase tracking-widest text-[9px]">
                       {recap.tag}
                     </Badge>
                   </div>
+                  <div className="absolute top-5 right-5">
+                    <div className="flex items-center gap-1.5 bg-black/40 backdrop-blur-md border border-white/[0.08] px-3 py-1.5 rounded-full">
+                      <Users className="h-3 w-3 text-zinc-400" aria-hidden="true" />
+                      <span className="text-[9px] font-black text-zinc-400 uppercase tracking-widest">{recap.attendees} aanwezig</span>
+                    </div>
+                  </div>
                 </div>
-                <h4 className="text-3xl font-black tracking-tighter mb-4 group-hover:text-blue-500 transition-colors">{recap.title}</h4>
-                <p className="text-zinc-500 leading-relaxed font-medium">{recap.desc}</p>
-              </motion.div>
+
+                {/* Text */}
+                <h3 className="text-2xl font-black tracking-tight mb-2 group-hover:text-blue-400 transition-colors duration-300">
+                  {recap.title}
+                </h3>
+                <p className="text-zinc-500 text-sm leading-relaxed">{recap.desc}</p>
+              </motion.article>
             ))}
           </div>
-        </section>
-      </div>
-      
-      <style dangerouslySetInnerHTML={{ __html: `
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .no-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}} />
+        </div>
+      </section>
+
+      {/* ── BOTTOM CTA ── */}
+      <section className="border-t border-white/[0.05] py-20 md:py-24">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col md:flex-row items-center justify-between gap-8 bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 md:p-12 relative overflow-hidden"
+          >
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-80 h-60 bg-blue-600/8 blur-[80px]" aria-hidden="true" />
+
+            <div className="max-w-xl">
+              <p className="text-[9px] font-black uppercase tracking-[0.28em] text-zinc-600 mb-3">Toegang tot alle events</p>
+              <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-3">
+                Word lid en reserveer jouw plek.
+              </h2>
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                Alle events zijn exclusief voor leden. Word lid van de community en heb toegang
+                tot het volledige jaarlijkse event-programma.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+              <Button
+                render={<Link to="/aanmelden" />}
+                nativeButton={false}
+                size="lg"
+                className="group bg-white text-black hover:bg-zinc-100 rounded-full px-8 min-h-[52px] font-black uppercase tracking-wider text-sm transition-all duration-300 active:scale-95 shadow-[0_0_40px_rgba(255,255,255,0.08)] hover:shadow-[0_0_60px_rgba(255,255,255,0.18)] cursor-pointer"
+              >
+                Word lid van JOB
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              </Button>
+              <Button
+                render={<Link to="/over-ons" />}
+                nativeButton={false}
+                variant="ghost"
+                size="lg"
+                className="rounded-full px-8 min-h-[52px] text-sm font-bold text-zinc-400 hover:text-white bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.08] hover:border-white/[0.16] transition-all duration-300 active:scale-95 uppercase tracking-wider cursor-pointer"
+              >
+                Over ons
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
     </div>
   );
 }
-

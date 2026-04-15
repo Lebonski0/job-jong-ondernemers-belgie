@@ -1,20 +1,43 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# JOB – Jong Ondernemers België
 
-# Run and deploy your AI Studio app
+Een premium community platform voor jonge ondernemers in België. Gebouwd met React, Vite, Tailwind CSS en Framer Motion.
 
-This contains everything you need to run your app locally.
+## 🚀 Lokaal opstarten
 
-View your app in AI Studio: https://ai.studio/apps/c4cccbbc-6266-45c5-8205-f3cde85b3e8a
+**Vereisten:** Node.js (v18+)
 
-## Run Locally
+```bash
+# Installeer dependencies
+npm install
 
-**Prerequisites:**  Node.js
+# Start de lokale dev server
+npm run dev
+```
 
+De app draait op `http://localhost:3000`.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 🛠 Tech Stack
+
+- **Framework:** React 19 + TypeScript
+- **Build tool:** Vite 6
+- **Styling:** Tailwind CSS v4
+- **Animaties:** Framer Motion (motion/react)
+- **Routing:** React Router v7
+- **UI Components:** Base UI + Shadcn
+
+## 📁 Project structuur
+
+```
+src/
+├── components/
+│   └── layout/       # Navbar, Footer
+├── pages/            # Home, About, Events, Speakers, News, Join
+└── main.tsx
+public/
+└── assets/
+    └── speakers/     # Spreker afbeeldingen
+```
+
+## 🌐 Community
+
+Word lid van de JOB Discord server: [discord.gg/nXzZSUdR](https://discord.gg/nXzZSUdR)
