@@ -69,14 +69,15 @@ export default function EventsPreview() {
             <motion.div 
               key={i}
               whileHover={{ y: -5 }}
+              onClick={() => window.open('https://discord.gg/Dy6cG5gG', '_blank')}
               className="min-w-[280px] md:min-w-[420px] snap-start group relative h-[380px] rounded-[24px] overflow-hidden cursor-pointer border border-zinc-800/50"
             >
               <img 
                 src={event.image} 
                 alt={event.title} 
-                className="absolute inset-0 w-full h-full object-cover opacity-30 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700 mix-blend-lighten"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
               <div className="absolute bottom-0 left-0 p-8 w-full">
                 <div className="flex items-center gap-2 mb-3">
                   <Badge className="bg-blue-500/20 backdrop-blur-md border-blue-500/30 text-blue-400 hover:bg-blue-500/30 font-black uppercase tracking-widest text-[9px]">

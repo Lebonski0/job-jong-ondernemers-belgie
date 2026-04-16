@@ -218,10 +218,10 @@ export default function Events() {
                   <img
                     src={event.image}
                     alt={event.title}
-                    className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700"
+                    className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700 mix-blend-lighten"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#08080c] via-[#08080c]/80 to-[#08080c]/30" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#08080c] via-[#08080c]/60 to-transparent" />
 
                   {/* Content */}
                   <div className="relative z-10 p-6 flex flex-col h-full">
@@ -267,6 +267,9 @@ export default function Events() {
                       </div>
                       <Button
                         disabled={event.full}
+                        onClick={() => {
+                          if (!event.full) window.open("https://discord.gg/Dy6cG5gG", "_blank");
+                        }}
                         className={cn(
                           "w-full rounded-full min-h-[44px] font-black uppercase tracking-wider text-xs transition-all active:scale-95 cursor-pointer",
                           event.full

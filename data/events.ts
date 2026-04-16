@@ -39,7 +39,7 @@ export const upcomingEvents = [
     color: "zinc",
     description: "Achter de schermen bereiden we de volgende exclusieve gastspreker en sessie voor. Binnenkort aangekondigd in de Discord.",
 
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80&auto=format&fit=crop&grayscale=true",
+    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80&auto=format&fit=crop",
     icon: CalendarClock,
   },
   {
@@ -58,7 +58,7 @@ export const upcomingEvents = [
     color: "zinc",
     description: "Achter de schermen bereiden we de volgende exclusieve sessies voor. Binnenkort aangekondigd in de Discord.",
 
-    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80&auto=format&fit=crop&grayscale=true",
+    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80&auto=format&fit=crop",
     icon: CalendarClock,
   },
   {
@@ -77,7 +77,7 @@ export const upcomingEvents = [
     color: "zinc",
     description: "Achter de schermen bereiden we de volgende exclusieve sessies voor. Binnenkort aangekondigd in de Discord.",
 
-    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&q=80&auto=format&fit=crop&grayscale=true",
+    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&q=80&auto=format&fit=crop",
     icon: CalendarClock,
   },
   {
@@ -96,7 +96,7 @@ export const upcomingEvents = [
     color: "zinc",
     description: "Achter de schermen bereiden we de volgende exclusieve sessies voor. Binnenkort aangekondigd in de Discord.",
 
-    image: "https://images.unsplash.com/photo-1522158637959-30385a09e0da?w=800&q=80&auto=format&fit=crop&grayscale=true",
+    image: "https://images.unsplash.com/photo-1522158637959-30385a09e0da?w=800&q=80&auto=format&fit=crop",
     icon: CalendarClock,
   }
 ];
