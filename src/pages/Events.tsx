@@ -11,6 +11,7 @@ import {
   Clock,
   Archive,
   Zap,
+  Mic2,
 } from "lucide-react";
 import { motion } from "motion/react";
 import { useState, useRef } from "react";
@@ -27,6 +28,21 @@ const itemVariants = {
 };
 
 const upcomingEvents = [
+  {
+    date: "28 April",
+    day: "28",
+    month: "APR",
+    title: "The Gallerist: Van TikTok merk naar miljoenen bedrijf",
+    type: "Speaker Session",
+    time: "20:00 – 22:00",
+    spots: "0/30",
+    spotsLeft: 30,
+    full: false,
+    icon: Mic2,
+    image: "/event-the-gallerist.png",
+    description: "De oprichter van sneaker merk The Gallerist deelt zijn volledige traject van kleinschalig TikTok merk naar een miljoenenbedrijf.",
+    color: "blue",
+  },
   {
     date: "18 April",
     day: "18",
@@ -85,21 +101,6 @@ const upcomingEvents = [
     icon: Video,
     image: "https://picsum.photos/seed/product/800/600",
     description: "Hoe je product je beste marketingkanaal wordt.",
-    color: "blue",
-  },
-  {
-    date: "5 Juni",
-    day: "05",
-    month: "JUN",
-    title: "Summer Networking Drinks",
-    type: "Physical",
-    time: "17:00 – 21:00",
-    spots: "45/100",
-    spotsLeft: 55,
-    full: false,
-    icon: Users,
-    image: "https://picsum.photos/seed/drinks/800/600",
-    description: "Vier de zomer met de community op een unieke rooftop locatie.",
     color: "blue",
   },
 ];

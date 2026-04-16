@@ -20,6 +20,14 @@ export default function EventsPreview() {
 
   const upcomingEvents = [
     {
+      title: "The Gallerist: Van TikTok merk naar miljoenen bedrijf",
+      type: "Speaker Session",
+      date: "28 April, 20:00",
+      location: "Gentish LOFT",
+      image: "/event-the-gallerist.png",
+      icon: Mic2
+    },
+    {
       title: "Scaling to Series A: The Playbook",
       type: "Workshop",
       date: "24 April, 2024",
@@ -34,14 +42,6 @@ export default function EventsPreview() {
       location: "Gent",
       image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80",
       icon: Users
-    },
-    {
-      title: "Mastermind: B2B Sales Strategy",
-      type: "Online",
-      date: "18 April, 2024",
-      location: "Online",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
-      icon: Video
     }
   ];
 

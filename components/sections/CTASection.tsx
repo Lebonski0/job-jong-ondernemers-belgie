@@ -13,7 +13,7 @@ export default function CTASection() {
             Klaar om je netwerk naar het <span className="text-blue-500 italic">volgende niveau</span> te tillen?
           </h2>
           <p className="text-zinc-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto relative z-10">
-            We accepteren momenteel aanvragen voor de laatste 16 plaatsen. 
+            We accepteren momenteel aanvragen voor de laatste 65 plaatsen. 
             Geen business plan nodig, enkel ambitie.
           </p>
           <Button 

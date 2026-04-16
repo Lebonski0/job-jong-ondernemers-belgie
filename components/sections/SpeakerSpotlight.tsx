@@ -39,8 +39,8 @@ export default function SpeakerSpotlight() {
               {/* Image Column */}
               <div className="lg:col-span-5 relative h-[400px] lg:h-[550px] overflow-hidden border-b lg:border-b-0 lg:border-r border-white/[0.05]">
                 <img 
-                  src="/assets/speakers/vincent-tr.jpg" 
-                  alt="Vincent Tr" 
+                  src="/event-the-gallerist.png" 
+                  alt="Oprichter The Gallerist" 
                   className="w-full h-full object-cover group-hover/card:scale-105 transition-all duration-1000"
                   style={{ objectPosition: 'center 20%' }}
                 />
@@ -62,31 +62,31 @@ export default function SpeakerSpotlight() {
                   <div className="flex items-center gap-3 mb-4">
                     <h4 className="text-xs font-black uppercase tracking-[0.3em] text-blue-400">Spotlight Session</h4>
                     <div className="h-px w-8 bg-blue-500/30" />
-                    <span className="text-[10px] font-black text-zinc-500 uppercase tracking-widest">23 Years Old</span>
+                    <span className="text-[10px] font-black text-zinc-500 uppercase tracking-widest">Sneaker Entrepreneur</span>
                   </div>
                   <h3 className="text-4xl md:text-7xl font-black tracking-tighter mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-400">
-                    Vincent Tr
+                    The Gallerist
                   </h3>
                   <p className="text-blue-400 font-bold uppercase tracking-[0.2em] text-[11px] mb-8 flex items-center gap-2">
-                    Entrepreneur <span className="w-1.5 h-1.5 rounded-full bg-blue-500/30" /> Personal Branding <span className="w-1.5 h-1.5 rounded-full bg-blue-500/30" /> Online Scaling
+                    E-commerce <span className="w-1.5 h-1.5 rounded-full bg-blue-500/30" /> TikTok Scaling <span className="w-1.5 h-1.5 rounded-full bg-blue-500/30" /> Sneaker Market
                   </p>
                   <p className="text-zinc-200 text-lg md:text-2xl leading-relaxed max-w-xl font-medium italic border-l-2 border-blue-500/20 pl-6">
-                    "Helping brands dominate their niche through <span className="text-blue-400">strategic scaling</span> and high-impact personal branding."
+                    "Van kleinschalig TikTok merk naar een miljoenenbedrijf — <span className="text-blue-400">de blauwdruk</span> voor modern e-commerce succes."
                   </p>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-12">
                   <div className="space-y-1">
                     <p className="text-zinc-600 font-black uppercase tracking-widest text-[8px]">Expertise</p>
-                    <p className="text-white font-bold text-sm">Online Scaling</p>
+                    <p className="text-white font-bold text-sm">TikTok Marketing</p>
                   </div>
                   <div className="space-y-1">
                     <p className="text-zinc-600 font-black uppercase tracking-widest text-[8px]">Focus</p>
-                    <p className="text-white font-bold text-sm">Brand Authority</p>
+                    <p className="text-white font-bold text-sm">E-commerce</p>
                   </div>
                   <div className="space-y-1 hidden md:block">
                     <p className="text-zinc-600 font-black uppercase tracking-widest text-[8px]">Impact</p>
-                    <p className="text-white font-bold text-sm">Revenue Growth</p>
+                    <p className="text-white font-bold text-sm">Miljoenen Revenue</p>
                   </div>
                 </div>
 

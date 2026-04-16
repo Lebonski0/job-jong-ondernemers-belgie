@@ -38,7 +38,7 @@ export default function Hero() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" />
             </span>
             <span className="text-[10px] font-black text-zinc-300 uppercase tracking-[0.22em]">
-              Exclusieve toegang · Nog <span className="text-white">16 plaatsen</span> beschikbaar
+              Exclusieve toegang · Nog <span className="text-white">65 plaatsen</span> beschikbaar
             </span>
           </motion.div>
 
@@ -108,7 +108,7 @@ export default function Hero() {
                   </svg>
                 ))}
               </div>
-              <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-widest">33 actieve leden · 4.9/5</p>
+              <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-widest">35 actieve leden · 4.9/5</p>
             </div>
           </motion.div>
 
@@ -177,7 +177,7 @@ export default function Hero() {
               <div>
                 <p className="text-[9px] font-black uppercase tracking-[0.28em] text-zinc-600 mb-1.5">Huidige Capaciteit</p>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-black tracking-tight text-white">33</span>
+                  <span className="text-4xl font-black tracking-tight text-white">35</span>
                   <span className="text-base text-zinc-500 font-medium">/ 100 leden</span>
                 </div>
               </div>
@@ -185,14 +185,14 @@ export default function Hero() {
                 <Badge className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/15 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 mb-1.5">
                   LIVE
                 </Badge>
-                <p className="text-[9px] font-bold text-zinc-600 uppercase tracking-widest">Nog 67 vrij</p>
+                <p className="text-[9px] font-bold text-zinc-600 uppercase tracking-widest">Nog 65 vrij</p>
               </div>
             </div>
-            <div className="h-1.5 w-full bg-white/[0.06] rounded-full overflow-hidden mb-5" role="progressbar" aria-valuenow={33} aria-valuemin={0} aria-valuemax={100} aria-label="33 van 100 plaatsen bezet">
+            <div className="h-1.5 w-full bg-white/[0.06] rounded-full overflow-hidden mb-5" role="progressbar" aria-valuenow={35} aria-valuemin={0} aria-valuemax={100} aria-label="35 van 100 plaatsen bezet">
               <motion.div
                 className="h-full bg-gradient-to-r from-blue-600 to-blue-400 rounded-full"
                 initial={{ width: "0%" }}
-                animate={{ width: "33%" }}
+                animate={{ width: "35%" }}
                 transition={{ duration: 1.4, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
               />
             </div>

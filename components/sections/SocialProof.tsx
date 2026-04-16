@@ -6,7 +6,7 @@ export default function SocialProof() {
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-40 grayscale hover:grayscale-0 transition-all duration-500 text-[10px] font-black uppercase tracking-[0.2em]">
           <div className="flex items-center gap-2">
-            <Users className="h-4 w-4" /> 33 LEDEN
+            <Users className="h-4 w-4" /> 35 LEDEN
           </div>
           <div className="flex items-center gap-2">
             <Calendar className="h-4 w-4" /> 24 EVENTS/JAAR

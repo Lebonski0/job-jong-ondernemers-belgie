@@ -115,8 +115,8 @@ export default function Speakers() {
             {/* Image panel */}
             <div className="relative h-[400px] lg:h-auto overflow-hidden">
               <img
-                src="/assets/speakers/vincent-tr.jpg"
-                alt="Vincent Tr — gastspreker"
+                src="/event-the-gallerist.png"
+                alt="Oprichter The Gallerist — gastspreker"
                 className="w-full h-full object-cover group-hover/card:scale-105 transition-all duration-1000"
                 style={{ objectPosition: 'center 20%' }}
                 referrerPolicy="no-referrer"
@@ -140,23 +140,23 @@ export default function Speakers() {
               <p className="text-[9px] font-black uppercase tracking-[0.3em] text-blue-400 mb-4">Eerstvolgende gastspreker</p>
 
               <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-400">
-                Vincent Tr
+                The Gallerist
               </h2>
               <p className="text-blue-400 font-bold uppercase tracking-[0.2em] text-[10px] mb-8 flex items-center gap-2">
-                23 Jarig <span className="w-1 h-1 rounded-full bg-blue-500/30" /> Personal Branding <span className="w-1 h-1 rounded-full bg-blue-500/30" /> Online Scaling
+                Sneaker Entrepreneur <span className="w-1 h-1 rounded-full bg-blue-500/30" /> TikTok Scaling <span className="w-1 h-1 rounded-full bg-blue-500/30" /> E-commerce
               </p>
 
               <p className="text-zinc-300 text-base md:text-lg leading-relaxed mb-10 max-w-xl italic border-l-2 border-blue-500/20 pl-6">
-                "Het bouwen van een autoritair merk is de enige manier om duurzaam te schalen in de digitale economie."
+                "Van kleinschalig TikTok merk naar een miljoenenbedrijf — de enige manier om duurzaam te schalen in de moderne digitale economie."
               </p>
 
               {/* Meta grid */}
               <div className="grid grid-cols-2 gap-6 mb-12">
                 {[
-                  { icon: Mic2, label: "Specialisatie", value: "Online Scaling" },
-                  { icon: Users, label: "Focus", value: "Brand Authority" },
-                  { icon: Calendar, label: "Format", value: "Live Case Study" },
-                  { icon: ArrowUpRight, label: "Impact", value: "High Growth" },
+                  { icon: Mic2, label: "Specialisatie", value: "TikTok Marketing" },
+                  { icon: Users, label: "Focus", value: "E-commerce Success" },
+                  { icon: Calendar, label: "Format", value: "Growth Blueprint" },
+                  { icon: ArrowUpRight, label: "Impact", value: "Miljoenen Revenue" },
                 ].map(({ icon: Icon, label, value }) => (
                   <div key={label} className="flex items-start gap-3">
                     <div className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/[0.06] flex items-center justify-center shrink-0">
