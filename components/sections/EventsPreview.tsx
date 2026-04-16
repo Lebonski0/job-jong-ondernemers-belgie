@@ -4,6 +4,7 @@ import { Calendar, ChevronLeft, ChevronRight, MapPin, Video, Users, Mic2 } from 
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { useRef } from "react";
+import { upcomingEvents } from "@/data/events";
 
 export default function EventsPreview() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -18,32 +19,6 @@ export default function EventsPreview() {
     }
   };
 
-  const upcomingEvents = [
-    {
-      title: "The Gallerist: Van TikTok merk naar miljoenen bedrij...",
-      type: "Online Session",
-      date: "28 April, 20:00",
-      location: "Online",
-      image: "/event-the-gallerist.png",
-      icon: Video
-    },
-    {
-      title: "Scaling to Series A: The Playbook",
-      type: "Workshop",
-      date: "24 April, 2024",
-      location: "Antwerpen / Online",
-      image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
-      icon: Mic2
-    },
-    {
-      title: "Founder Dinner: Tech in Belgium",
-      type: "Physical",
-      date: "12 Mei, 2024",
-      location: "Gent",
-      image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80",
-      icon: Users
-    }
-  ];
 
   return (
     <section className="py-16 md:py-24 bg-zinc-950 border-y border-zinc-900 overflow-hidden relative group/section">
@@ -108,9 +83,9 @@ export default function EventsPreview() {
                     {event.type}
                   </Badge>
                 </div>
-                <h4 className="text-xl md:text-2xl font-black tracking-tighter mb-3 leading-tight line-clamp-2">{event.title}</h4>
+                <h4 className="text-2xl font-black tracking-tighter mb-3 leading-tight">{event.title}</h4>
                 <div className="flex flex-wrap items-center gap-4 text-zinc-400 text-[9px] font-bold uppercase tracking-widest">
-                  <span className="flex items-center gap-1.5"><Calendar className="h-3 w-3 text-blue-500" /> {event.date}</span>
+                  <span className="flex items-center gap-1.5"><Calendar className="h-3 w-3 text-blue-500" /> {event.dateString}</span>
                   <span className="flex items-center gap-1.5"><MapPin className="h-3 w-3 text-blue-500" /> {event.location}</span>
                 </div>
               </div>

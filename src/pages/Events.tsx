@@ -17,6 +17,7 @@ import { motion } from "motion/react";
 import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { upcomingEvents } from "@/data/events";
 
 const itemVariants = {
   hidden: { opacity: 0, y: 24 },
@@ -27,83 +28,6 @@ const itemVariants = {
   }),
 };
 
-const upcomingEvents = [
-  {
-    date: "28 April",
-    day: "28",
-    month: "APR",
-    title: "The Gallerist: Van TikTok merk naar miljoenen bedrijf",
-    type: "Online Session",
-    time: "20:00 – 22:00",
-    spots: "0/30",
-    spotsLeft: 30,
-    full: false,
-    icon: Video,
-    image: "/event-the-gallerist.png",
-    description: "De oprichter van sneaker merk The Gallerist deelt zijn volledige traject van kleinschalig TikTok merk naar een miljoenenbedrijf.",
-    color: "blue",
-  },
-  {
-    date: "18 April",
-    day: "18",
-    month: "APR",
-    title: "Mastermind: B2B Sales Strategy",
-    type: "Online",
-    time: "19:00 – 21:00",
-    spots: "12/15",
-    spotsLeft: 3,
-    full: false,
-    icon: Video,
-    image: "https://picsum.photos/seed/sales/800/600",
-    description: "Leer hoe je high-ticket B2B deals sluit zonder koud te bellen.",
-    color: "blue",
-  },
-  {
-    date: "24 April",
-    day: "24",
-    month: "APR",
-    title: "Thomas Van Damme: The Art of the Exit",
-    type: "Workshop",
-    time: "20:00 – 22:00",
-    spots: "Volzet",
-    spotsLeft: 0,
-    full: true,
-    icon: Users,
-    image: "https://picsum.photos/seed/exit/800/600",
-    description: "Exclusieve sessie over het verkopen van je bedrijf voor 8+ figuren.",
-    color: "red",
-  },
-  {
-    date: "12 Mei",
-    day: "12",
-    month: "MEI",
-    title: "Founder Dinner Gent: Tech & Growth",
-    type: "Physical",
-    time: "18:30 – Late",
-    spots: "4/20",
-    spotsLeft: 16,
-    full: false,
-    icon: MapPin,
-    image: "https://picsum.photos/seed/dinner3/800/600",
-    description: "Een intiem diner met 20 andere founders in het hartje van Gent.",
-    color: "blue",
-  },
-  {
-    date: "28 Mei",
-    day: "28",
-    month: "MEI",
-    title: "Product-Led Growth Masterclass",
-    type: "Online",
-    time: "19:00 – 21:00",
-    spots: "8/25",
-    spotsLeft: 17,
-    full: false,
-    icon: Video,
-    image: "https://picsum.photos/seed/product/800/600",
-    description: "Hoe je product je beste marketingkanaal wordt.",
-    color: "blue",
-  },
-];
 
 const formats = [
   {
@@ -287,9 +211,9 @@ export default function Events() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.08, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
                 role="listitem"
-                className="min-w-[280px] md:min-w-[340px] snap-start flex-shrink-0"
+                className="w-[300px] md:w-[380px] snap-start flex-shrink-0"
               >
-                <div className="relative h-[380px] rounded-2xl overflow-hidden border border-white/[0.07] bg-white/[0.02] group flex flex-col">
+                <div className="relative h-[420px] rounded-2xl overflow-hidden border border-white/[0.07] bg-white/[0.02] group flex flex-col">
                   {/* Background image */}
                   <img
                     src={event.image}
@@ -304,8 +228,14 @@ export default function Events() {
                     {/* Top row: date + spots */}
                     <div className="flex items-start justify-between mb-auto">
                       <div className="flex flex-col leading-none">
-                        <span className="text-5xl font-black tracking-[-0.05em]">{event.day}</span>
-                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500">{event.month}</span>
+                        {event.day ? (
+                          <>
+                            <span className="text-5xl font-black tracking-[-0.05em]">{event.day}</span>
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500">{event.month}</span>
+                          </>
+                        ) : (
+                          <span className="text-[10px] font-black uppercase tracking-[0.25em] text-zinc-500 mt-1">Binnenkort</span>
+                        )}
                       </div>
                       <Badge
                         className={cn(

@@ -258,7 +258,7 @@ export default function About() {
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-2 mb-5">
-                  {["#funding", "#growth", "#tech-stack", "#hiring", "#general"].map((ch) => (
+                  {["#algemeen", "#kennis-en-advies", "#vraag-en-aanbod", "#win-van-de-week", "#trends-en-nieuws"].map((ch) => (
                     <span key={ch} className="text-[10px] font-bold text-[#7289da] bg-[#5865F2]/10 border border-[#5865F2]/15 px-2.5 py-1 rounded-md">
                       {ch}
                     </span>

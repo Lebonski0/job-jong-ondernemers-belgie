@@ -33,8 +33,8 @@ const navLinks = [
 
 const communityLinks = [
   { label: "Discord", href: "https://discord.gg/nXzZSUdR", external: true },
-  { label: "Instagram", href: "#", external: true },
-  { label: "LinkedIn", href: "#", external: true },
+  { label: "Instagram", href: "https://www.instagram.com/stanpattyn/", external: true },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/stan-pattyn-b95b93257/", external: true },
   { label: "Privacy Policy", href: "#", external: false },
 ];
 
@@ -67,16 +67,19 @@ export function Footer() {
             {/* Sponsor logos */}
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-6 lg:gap-10 w-full">
               {[
-                { name: "Rêveur Atelier", tagline: "Creative Studio", initials: "RA" },
-                { name: "Garmsourced", tagline: "Fashion & Sourcing", initials: "GS" },
+                { name: "Rêveur Atelier", tagline: "Creative Studio", initials: "RA", href: "https://reveuratelier.eu/" },
+                { name: "Garmsourced", tagline: "Fashion & Sourcing", initials: "GS", href: "https://www.linkedin.com/company/garmsourced/about/" },
               ].map((s, i) => (
-                <motion.div
+                <motion.a
                   key={i}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-                  className="group relative flex items-center gap-4 px-6 py-4 rounded-2xl bg-zinc-900/30 border border-white/[0.04] hover:bg-zinc-800/50 hover:border-white/[0.08] transition-all duration-500 cursor-default"
+                  className="group relative flex items-center gap-4 px-6 py-4 rounded-2xl bg-zinc-900/30 border border-white/[0.04] hover:bg-zinc-800/50 hover:border-white/[0.08] transition-all duration-500 cursor-pointer"
                 >
                   {/* Subtle inner glow on hover */}
                   <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 bg-gradient-to-br from-white/[0.03] to-transparent transition-opacity duration-500 pointer-events-none" />
@@ -91,7 +94,7 @@ export function Footer() {
                     <p className="text-sm font-black tracking-wide text-zinc-200 group-hover:text-white transition-colors duration-500">{s.name}</p>
                     <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-zinc-600 group-hover:text-zinc-500 mt-1 transition-colors duration-500">{s.tagline}</p>
                   </div>
-                </motion.div>
+                </motion.a>
               ))}
 
               {/* Become a partner pill */}
@@ -143,8 +146,8 @@ export function Footer() {
             {/* Social icons */}
             <div className="flex items-center gap-3">
               {[
-                { icon: Instagram, href: "#", label: "Instagram" },
-                { icon: Linkedin, href: "#", label: "LinkedIn" },
+                { icon: Instagram, href: "https://www.instagram.com/stanpattyn/", label: "Instagram" },
+                { icon: Linkedin, href: "https://www.linkedin.com/in/stan-pattyn-b95b93257/", label: "LinkedIn" },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
