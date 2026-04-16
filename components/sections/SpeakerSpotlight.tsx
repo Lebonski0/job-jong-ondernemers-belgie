@@ -55,7 +55,7 @@ export default function SpeakerSpotlight() {
               {/* Content Column */}
               <div className="lg:col-span-7 p-8 md:p-14 flex flex-col justify-center relative">
                 <div className="absolute top-0 right-0 p-8 hidden md:block">
-                  <span className="text-[60px] font-black text-blue-500/5 tracking-tighter leading-none select-none">2024</span>
+                  <span className="text-[60px] font-black text-blue-500/5 tracking-tighter leading-none select-none">2026</span>
                 </div>
 
                 <div className="mb-10">
