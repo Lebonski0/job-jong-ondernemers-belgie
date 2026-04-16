@@ -20,12 +20,12 @@ export default function EventsPreview() {
 
   const upcomingEvents = [
     {
-      title: "The Gallerist: Van TikTok merk naar miljoenen bedrijf",
-      type: "Speaker Session",
+      title: "The Gallerist: Van TikTok merk naar miljoenen bedrij...",
+      type: "Online Session",
       date: "28 April, 20:00",
-      location: "Gentish LOFT",
+      location: "Online",
       image: "/event-the-gallerist.png",
-      icon: Mic2
+      icon: Video
     },
     {
       title: "Scaling to Series A: The Playbook",
@@ -108,7 +108,7 @@ export default function EventsPreview() {
                     {event.type}
                   </Badge>
                 </div>
-                <h4 className="text-2xl font-black tracking-tighter mb-3 leading-tight">{event.title}</h4>
+                <h4 className="text-xl md:text-2xl font-black tracking-tighter mb-3 leading-tight line-clamp-2">{event.title}</h4>
                 <div className="flex flex-wrap items-center gap-4 text-zinc-400 text-[9px] font-bold uppercase tracking-widest">
                   <span className="flex items-center gap-1.5"><Calendar className="h-3 w-3 text-blue-500" /> {event.date}</span>
                   <span className="flex items-center gap-1.5"><MapPin className="h-3 w-3 text-blue-500" /> {event.location}</span>

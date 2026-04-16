@@ -33,12 +33,12 @@ const upcomingEvents = [
     day: "28",
     month: "APR",
     title: "The Gallerist: Van TikTok merk naar miljoenen bedrijf",
-    type: "Speaker Session",
+    type: "Online Session",
     time: "20:00 – 22:00",
     spots: "0/30",
     spotsLeft: 30,
     full: false,
-    icon: Mic2,
+    icon: Video,
     image: "/event-the-gallerist.png",
     description: "De oprichter van sneaker merk The Gallerist deelt zijn volledige traject van kleinschalig TikTok merk naar een miljoenenbedrijf.",
     color: "blue",
@@ -287,9 +287,9 @@ export default function Events() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.08, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
                 role="listitem"
-                className="min-w-[300px] md:min-w-[380px] snap-start flex-shrink-0"
+                className="min-w-[280px] md:min-w-[340px] snap-start flex-shrink-0"
               >
-                <div className="relative h-[420px] rounded-2xl overflow-hidden border border-white/[0.07] bg-white/[0.02] group flex flex-col">
+                <div className="relative h-[380px] rounded-2xl overflow-hidden border border-white/[0.07] bg-white/[0.02] group flex flex-col">
                   {/* Background image */}
                   <img
                     src={event.image}
@@ -300,7 +300,7 @@ export default function Events() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#08080c] via-[#08080c]/80 to-[#08080c]/30" />
 
                   {/* Content */}
-                  <div className="relative z-10 p-7 flex flex-col h-full">
+                  <div className="relative z-10 p-6 flex flex-col h-full">
                     {/* Top row: date + spots */}
                     <div className="flex items-start justify-between mb-auto">
                       <div className="flex flex-col leading-none">
@@ -325,10 +325,10 @@ export default function Events() {
                         <event.icon className="h-3.5 w-3.5 text-blue-400" aria-hidden="true" />
                         <span className="text-[9px] font-black uppercase tracking-[0.2em] text-zinc-500">{event.type}</span>
                       </div>
-                      <h3 className="text-xl font-black tracking-tight mb-2 leading-snug">
+                      <h3 className="text-lg font-black tracking-tight mb-2 leading-snug line-clamp-2">
                         {event.title}
                       </h3>
-                      <p className="text-zinc-500 text-xs leading-relaxed mb-5 line-clamp-2">
+                      <p className="text-zinc-500 text-xs leading-relaxed mb-4 line-clamp-2">
                         {event.description}
                       </p>
                       <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-zinc-600 mb-5">
